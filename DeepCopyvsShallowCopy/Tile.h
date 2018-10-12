@@ -9,6 +9,7 @@ class Tile
 {
 public:
 	// variables
+	Rectangle rec;
 	Texture2D Background;
 	Color tint;
 

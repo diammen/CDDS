@@ -11,6 +11,7 @@ class MasterTile
 public:
 	Tile * types;
 	int * grid;
+	Rectangle * tilePos;
 	int rows;
 	int cols;
 

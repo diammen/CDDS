@@ -13,6 +13,8 @@ Tile::Tile(string imageFilename)
 {
 	Background = LoadTexture(imageFilename.c_str());
 	tint = WHITE;
+	rec.width = 64;
+	rec.height = 64;
 }
 
 Tile::~Tile()

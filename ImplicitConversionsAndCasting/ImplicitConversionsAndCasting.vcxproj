@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{97DA1AF5-EBC6-448D-9A40-36B028110AC0}</ProjectGuid>
-    <RootNamespace>DeepCopyvsShallowCopy</RootNamespace>
+    <ProjectGuid>{5C3E7D90-537D-4329-BCFE-C4B2E136C053}</ProjectGuid>
+    <RootNamespace>ImplicitConversionsAndCasting</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -120,15 +120,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Corpse.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MasterTile.cpp" />
-    <ClCompile Include="Tile.cpp" />
-    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="NewerClass.cpp" />
+    <ClCompile Include="OriginalClass.cpp" />
+    <ClCompile Include="Wizard.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MasterTile.h" />
-    <ClInclude Include="Tile.h" />
-    <ClInclude Include="utils.h" />
+    <ClInclude Include="Corpse.h" />
+    <ClInclude Include="NewerClass.h" />
+    <ClInclude Include="OriginalClass.h" />
+    <ClInclude Include="Wizard.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

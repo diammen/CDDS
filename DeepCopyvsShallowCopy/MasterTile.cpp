@@ -7,15 +7,15 @@
 MasterTile::MasterTile()
 {
 	types = new Tile[3];
-	grid = new int[40];
+	grid = new int[225];
 	rows = 5;
 	cols = 5;
 }
 
 MasterTile::~MasterTile()
 {
-	delete[] types;
-	delete[] grid;
+	//delete[] types;
+	//delete[] grid;
 }
 
 void MasterTile::draw()
@@ -25,7 +25,7 @@ void MasterTile::draw()
 	int yCounter = 0;
 	int xCounter = 0;
 
-	for (int i = 0; i < 210; ++i)
+	for (int i = 0; i < 225; ++i)
 	{
 		if (xCounter == 15)
 		{
@@ -39,5 +39,9 @@ void MasterTile::draw()
 		if (grid[i] == 2)
 			DrawTexture(types[2].Background, 0 + width * xCounter, 0 + height * yCounter, types[2].tint);
 		xCounter++;
+		tilePos[i].x = 0 + width * xCounter;
+		tilePos[i].y = 0 + height * yCounter;
+		tilePos[i].width = 64;
+		tilePos[i].height = 64;
 	}
 }
