@@ -1,8 +1,8 @@
-#include <raylib.h>
+#include "raylib.h"
+#include "sprite.h"
+#include "button.h"
+#include <iostream>
 #include <string>
-#include "Wizard.h"
-#include "Corpse.h"
-#include "Player.h"
 using std::string;
 
 int main()
@@ -14,12 +14,16 @@ int main()
 
 	InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
-	Player player;
-	Wizard wiz;
-	Barbarian barb;
-	Corpse dead;
+	string sprites[15] = {};
+	for (int i = 0; i < 15; ++i)
+	{
+		string temp = "ballshade_" + std::to_string(i+1) + ".png";
+		sprites[i] = temp;
+	}
+	string buttons[2] = { "bluebutton.png", "redbutton.png"};
 
-	bullet playerBullet[5];
+	sprite player(sprites, 15, 12.0f);
+	button test(buttons, Vector2{ 300,300 }, 2);
 
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------
@@ -29,33 +33,21 @@ int main()
 	{
 		// Update
 		//----------------------------------------------------------------------------------
-		if (IsKeyPressed(KEY_LEFT))
-			wiz.hp--;
-		if (IsKeyDown(KEY_W))
-			player.position.y--;
-		if (IsKeyDown(KEY_S))
-			player.position.y++;
 		if (IsKeyDown(KEY_D))
-			player.position.x++;
+		{
+			player.x++;
+		}
 		if (IsKeyDown(KEY_A))
-			player.position.x--;
-		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 		{
-			playerBullet[0].direction = player.position;
-			playerBullet[0].enabled = true;
+			player.x--;
 		}
-		if (wiz.hp <= 0)
+		if (IsKeyDown(KEY_W))
 		{
-			wiz.enabled = false;
-			dead = wiz;
-			dead.enabled = true;
+			player.y--;
 		}
-		for (int i = 0; i < 5; ++i)
+		if (IsKeyDown(KEY_S))
 		{
-			if (playerBullet[i].enabled)
-			{
-				playerBullet[i].direction.x+= 3;
-			}
+			player.y++;
 		}
 		//----------------------------------------------------------------------------------
 
@@ -63,13 +55,12 @@ int main()
 		//----------------------------------------------------------------------------------
 		BeginDrawing();
 
-		ClearBackground(GRAY);
+		ClearBackground(RAYWHITE);
 
-		if (player.enabled) { player.draw(); }
-		if (wiz.enabled) { wiz.draw(); }
-		if (dead.enabled) { dead.draw(); }
-		DrawText(FormatText("HEALTH: %i", player.hp), 5, 5, 20, WHITE);
-		DrawRectangle(playerBullet[0].direction.x, playerBullet[0].direction.y, 20, 5, WHITE);
+		DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+
+		player.draw();
+		test.draw();
 
 		EndDrawing();
 		//----------------------------------------------------------------------------------
@@ -78,7 +69,7 @@ int main()
 	// De-Initialization
 	//--------------------------------------------------------------------------------------   
 	CloseWindow();        // Close window and OpenGL context
-	//--------------------------------------------------------------------------------------
+						  //--------------------------------------------------------------------------------------
 
 	return 0;
 }

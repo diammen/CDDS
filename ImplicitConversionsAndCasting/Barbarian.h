@@ -2,22 +2,21 @@
 #include <iostream>
 #include "raylib.h"
 using std::string;
-class Wizard
+class Barbarian
 {
 public:
-	Wizard();
-	~Wizard();
+	Barbarian();
+	~Barbarian();
 
 	string name;
 	int hp = 5;
-	int mana = 50;
+	int mana = 20;
 	bool enabled = true;
 	int gold;
 
 	Texture2D sprite;
 	Color tint;
 	Vector2 position;
-	Rectangle col;
 
 	void draw();
 };

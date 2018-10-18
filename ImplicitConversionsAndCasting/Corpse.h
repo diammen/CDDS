@@ -2,11 +2,13 @@
 #include <iostream>
 #include <raylib.h>
 #include "Wizard.h"
+#include "Barbarian.h"
 using std::string;
 class Corpse
 {
 public:
 	Corpse(Wizard ent);
+	Corpse(Barbarian ent);
 	Corpse();
 	~Corpse();
 

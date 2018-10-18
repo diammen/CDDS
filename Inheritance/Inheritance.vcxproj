@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{5C3E7D90-537D-4329-BCFE-C4B2E136C053}</ProjectGuid>
-    <RootNamespace>ImplicitConversionsAndCasting</RootNamespace>
+    <ProjectGuid>{830D41FA-18D6-4D58-9103-E05FE9ABF2F9}</ProjectGuid>
+    <RootNamespace>Inheritance</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -120,21 +120,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Barbarian.cpp" />
-    <ClCompile Include="Corpse.cpp" />
+    <ClCompile Include="button.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="NewerClass.cpp" />
-    <ClCompile Include="OriginalClass.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Wizard.cpp" />
+    <ClCompile Include="sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Barbarian.h" />
-    <ClInclude Include="Corpse.h" />
-    <ClInclude Include="NewerClass.h" />
-    <ClInclude Include="OriginalClass.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Wizard.h" />
+    <ClInclude Include="button.h" />
+    <ClInclude Include="sprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -28,6 +28,16 @@ Corpse::Corpse(Wizard ent)
 	tint = RED;
 }
 
+Corpse::Corpse(Barbarian ent)
+{
+	name = ent.name;
+	mana = ent.mana;
+	gold = ent.gold;
+	position = ent.position;
+	sprite = ent.sprite;
+	tint = RED;
+}
+
 Corpse::~Corpse()
 {
 	//UnloadTexture(sprite);
