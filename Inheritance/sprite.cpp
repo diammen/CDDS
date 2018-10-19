@@ -3,6 +3,11 @@
 #include <iostream>
 using std::string;
 
+sprite::sprite()
+{
+
+}
+
 sprite::sprite(const string *fileName, const int cellCount, const float _frameRate)
 {
 	spriteCells = new Texture2D[cellCount];
