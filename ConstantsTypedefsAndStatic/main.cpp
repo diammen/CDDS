@@ -10,35 +10,22 @@
 ********************************************************************************************/
 
 #include "raylib.h"
-#include "utils.h"
-#include "gameObject.h"
-#include "ninja.h"
-#include "testButton.h"
+#include "dialFace.h"
+
+float clock::radius = 250;
+float clock::seconds = 0;
+Vector2 clock::position = Vector2{ 250, 250 };
 
 int main()
 {
 	// Initialization
 	//--------------------------------------------------------------------------------------
-	int screenWidth = 800;
-	int screenHeight = 450;
+	int screenWidth = 500;
+	int screenHeight = 500;
 
-	int test1 = min(2, 3);
-	int test2 = max(5, 10);
+	InitWindow(screenWidth, screenHeight, "Constants, Typedefs, and Static");
 
-	InitWindow(screenWidth, screenHeight, "Templates");
-
-	Vector2 pos = { 100,100 };
-	Vector2 pos1 = { 300,300 };
-	ninja shinobi("ballshade_1.png");
-
-	gameObject<ninja> myNinja(shinobi);
-	myNinja.setPos(pos);
-
-	string buttons[2] = { "bluebutton.png", "redbutton.png" };
-
-	testButton button("bluebutton.png");
-	gameObject<testButton> myButton(button);
-	myButton.setPos(pos1);
+	clock clock;
 
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------
@@ -48,22 +35,16 @@ int main()
 	{
 		// Update
 		//----------------------------------------------------------------------------------
-		myNinja.update(GetFrameTime());
-		myNinja.move();
-		if (myButton.checkForClick())
-		{
-			myNinja.enabled = !myNinja.enabled;
-		}
+		clock.tick();
 		//----------------------------------------------------------------------------------
 
 		// Draw
 		//----------------------------------------------------------------------------------
 		BeginDrawing();
 
-		ClearBackground(GRAY);
+		ClearBackground(WHITE);
 
-		myNinja.render();
-		myButton.render();
+		clock.drawFace();
 
 		EndDrawing();
 		//----------------------------------------------------------------------------------

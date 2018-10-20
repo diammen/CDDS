@@ -1,9 +1,11 @@
 #pragma once
 #include "raylib.h"
+#include <vector>
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
 using std::string;
+using std::vector;
 class enemy
 {
 public:
@@ -19,3 +21,5 @@ public:
 
 	void draw();
 };
+
+vector<enemy> updateVector(enemy *  enemies, int enemyCount);

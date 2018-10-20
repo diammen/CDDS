@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{EA38B265-A3C8-4A5A-96EA-3CC3B9DB8820}</ProjectGuid>
-    <RootNamespace>Templates</RootNamespace>
+    <ProjectGuid>{D61A069B-B1BF-4837-A9D3-729DC87D4CDB}</ProjectGuid>
+    <RootNamespace>ConstantsTypedefsAndStatic</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -120,16 +120,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="gameObject.cpp" />
+    <ClCompile Include="dialFace.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ninja.cpp" />
-    <ClCompile Include="testButton.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="gameObject.h" />
-    <ClInclude Include="ninja.h" />
-    <ClInclude Include="testButton.h" />
-    <ClInclude Include="utils.h" />
+    <ClInclude Include="dialFace.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

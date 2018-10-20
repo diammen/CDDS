@@ -7,15 +7,19 @@
 #include "necromancer.h"
 #include <iostream>
 #include <string>
+#include <vector>
 using std::string;
+using std::vector;
 
 int main()
 {
 	// Initialization
 	//--------------------------------------------------------------------------------------
 	srand(time(NULL));
+	bool gameOver = true;
 	int screenWidth = 800;
 	int screenHeight = 450;
+	int enemyCount = 0;
 	Vector2 mousePos = { 0,0 };
 
 	InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
@@ -36,6 +40,7 @@ int main()
 	enemy * enemies[2];
 	enemies[0] = new evilEnt(sprites2[3]);
 	enemies[1] = new necromancer(sprites2[2]);
+	vector<enemy> enemies2;
 
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------
@@ -45,14 +50,36 @@ int main()
 	{
 		// Update
 		//----------------------------------------------------------------------------------
-		if (IsMouseButtonPressed(0))
+		if (!gameOver)
 		{
-			mousePos = GetMousePosition();
-			player1.moveTo(mousePos);
+			if (IsMouseButtonPressed(0))
+			{
+				mousePos = GetMousePosition();
+				player1.moveTo(mousePos);
+			}
+			for (int i = 0; i < enemyCount; ++i)
+			{
+				enemies2[i].moveTo(player1.position);
+			}
 		}
-		player2.moveTo(mousePos);
-		enemies[0]->moveTo(player1.position);
-		enemies[1]->moveTo(player1.position);
+		else
+		{
+			if (IsKeyPressed(KEY_ENTER))
+			{
+				enemies2 = updateVector(*enemies, enemyCount);
+				gameOver = false;
+			}
+			if (IsKeyPressed(KEY_LEFT))
+			{
+				enemyCount--;
+			}
+			if (IsKeyPressed(KEY_RIGHT))
+			{
+				enemyCount++;
+			}
+			if (enemyCount < 0)
+				enemyCount = 0;
+		}
 		//----------------------------------------------------------------------------------
 
 		// Draw
@@ -61,12 +88,22 @@ int main()
 
 		ClearBackground(RAYWHITE);
 
-		DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-
-		player1.draw();
-		player2.draw();
-		enemies[0]->draw();
-		enemies[1]->draw();
+		if (!gameOver)
+		{
+			player1.draw();
+			for (int i = 0; i < enemyCount; ++i)
+			{
+				enemies2[i].draw();
+			}
+			//enemies[0]->draw();
+			//enemies[1]->draw();
+		}
+		else
+		{
+			DrawText(FormatText("Enemy Count: %i", enemyCount), GetScreenWidth() / 2 - MeasureText("Enemy Count: %i", 20) / 2, GetScreenHeight() / 2, 20, BLACK);
+			DrawText("Enter how many enemies will spawn.", 100, 100, 20, BLACK);
+			DrawText("Left arrow key: less Right arrow key: more", 100, 150, 20, BLACK);
+		}
 
 		EndDrawing();
 		//----------------------------------------------------------------------------------
