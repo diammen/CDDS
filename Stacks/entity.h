@@ -1,6 +1,6 @@
 #pragma once
 #include "raylib.h"
-#include "tVector.h"
+#include "raylib.h"
 #include <vector>
 #include <iostream>
 #include <stdlib.h>
@@ -15,10 +15,8 @@ public:
 	entity();
 	~entity();
 
-	tVector<entity> bullets;
 	Vector2 position;
 	float speed;
-	bool enabled;
 	Texture2D mySprite;
 
 	bool moveTo(Vector2 &dest);

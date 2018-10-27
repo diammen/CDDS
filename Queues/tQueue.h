@@ -27,6 +27,10 @@ public:
 	{
 		vec.pop_front();
 	}
+	void clear()
+	{
+		vec.clear();
+	}
 
 	T& front()								// returns the front-most element
 	{

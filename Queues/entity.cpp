@@ -7,6 +7,7 @@ entity::entity(const string &fileName)
 	speed = 100;
 	position.x = GetMousePosition().x;
 	position.y = GetMousePosition().y;
+	enabled = true;
 }
 
 entity::entity()

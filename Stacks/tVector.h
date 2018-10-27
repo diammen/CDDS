@@ -14,7 +14,7 @@ public:
 	{
 		arrSize = 0;
 		arrCapacity = 0;
-		arr = nullptr;
+		arr = new T[arrCapacity];
 	}
 	~tVector()								// destroys the underlying array
 	{
@@ -117,7 +117,7 @@ public:
 
 	void shrink_to_fit()
 	{
-		if (arrSize == arrCapacity) { return;  }
+		if (arrSize == arrCapacity) { return; }
 
 		T * newArr = new T[arrSize];
 

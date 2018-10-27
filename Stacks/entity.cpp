@@ -26,13 +26,14 @@ bool entity::moveTo(Vector2 &dest)
 	{
 		float x = dest.x - position.x;
 		float y = dest.y - position.y;
-		position.x += (dest.x - position.x) / sqrt(x * x + y * y) + (cos(x) * sin(x)) * 6 * GetFrameTime() * speed;
-		position.y += (dest.y - position.y) / sqrt(x * x + y * y) + (cos(y) * sin(y)) * 6 * GetFrameTime() * speed;
+		position.x += (dest.x - position.x) / sqrt(x * x + y * y) * GetFrameTime() * speed;
+		position.y += (dest.y - position.y) / sqrt(x * x + y * y) * GetFrameTime() * speed;
 	}
 	else
 	{
 		return true;
 	}
+	return false;
 }
 
 void entity::draw()

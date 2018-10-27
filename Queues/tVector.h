@@ -39,6 +39,8 @@ public:
 		{
 			push_back(vec.arr[i]);
 		}
+
+		return *this;
 	}
 
 	T& operator[] (size_t index)
@@ -74,6 +76,7 @@ public:
 	}
 	void pop_back()						// drops the last element of the vector
 	{
+		if (arrCapacity <= 0) return;
 		arrCapacity--;
 		arrSize--;
 		reserve(arrCapacity);
@@ -145,7 +148,6 @@ public:
 
 	void clear()
 	{
-		delete[] arr;
 		arrSize = arrCapacity = 0;
 	}
 };

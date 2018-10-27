@@ -16,6 +16,7 @@
 #include "entity.h"
 #include "baseCommand.h"
 #include "moveTo.h"
+#include "attack.h"
 
 int main()
 {
@@ -29,11 +30,16 @@ int main()
 	moveTo moveCommand;
 
 	entity ball("blueball.png");
+	entity ball2("redball.png");
+	ball2.enabled = false;
 
 	tVector<entity> ents;
 	ents.push_back(ball);
+	ents[0].bullets.push_back(ball2);
+
 
 	tQueue<baseCommand*> commands;
+	tQueue<baseCommand*> bulletCommands;
 
 	int count = 0;
 
@@ -53,8 +59,18 @@ int main()
 		{
 			if (commands.front()->doCommand(ents[ents.size() - 1]))
 			{
+				delete commands.front();
 				commands.pop();
 			}
+		}
+		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+		{
+			if (!commands.empty())
+			{
+				delete commands.front();
+				commands.pop();
+			}
+			commands.push(new attack(GetMousePosition()));
 		}
 		//----------------------------------------------------------------------------------
 

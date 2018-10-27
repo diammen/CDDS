@@ -10,6 +10,7 @@
 ********************************************************************************************/
 
 #include "raylib.h"
+#include "tStack.h"
 #include "tVector.h"
 #include "entity.h"
 
@@ -19,29 +20,16 @@ int main()
 	//--------------------------------------------------------------------------------------
 	int screenWidth = 800;
 	int screenHeight = 450;
-	
-	//tVector<int> orig;
-	//orig.push_back(1);
-	//orig.push_back(2);
-	//orig.push_back(3);
-
-	//tVector<int> copy = orig;
-	//orig.pop_back();
-	//orig.pop_back();
-	//orig.pop_back();
-
-	//int values[3];
-	//values[0] = copy[0];
-	//values[1] = copy[1];
-	//values[2] = copy[2];
+	Vector2 pos;
 
 	InitWindow(screenWidth, screenHeight, "Stacks");
 
-	entity ball("ballshade_9.png");
+	entity blueBall("blueball.png");
+	entity redBall("redball.png");
+	entity yellowball("yellowball.png");
+	entity brownball("brownball.png");
 
-	tVector<entity> ents;
-
-	int count = 0;
+	tStack<entity> ents;
 
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------
@@ -51,15 +39,27 @@ int main()
 	{
 		// Update
 		//----------------------------------------------------------------------------------
-		for (int i = 0; i < ents.size(); ++i)
+		if (IsKeyPressed(KEY_ONE))
 		{
-			Vector2 pos = GetMousePosition();
-			ents[i].moveTo(pos);
+			ents.push(blueBall);
 		}
-		if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
+		if (IsKeyPressed(KEY_TWO))
 		{
-			ents.push_back(ball);
-			ents[ents.size()-1].position = GetMousePosition();
+			ents.push(redBall);
+		}
+		if (IsKeyPressed(KEY_THREE))
+		{
+			ents.push(yellowball);
+		}
+		if (IsKeyPressed(KEY_FOUR))
+		{
+			ents.push(brownball);
+		}
+		ents.top().moveTo(pos);
+
+		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+		{
+			pos = GetMousePosition();
 		}
 		//----------------------------------------------------------------------------------
 
@@ -69,10 +69,10 @@ int main()
 
 		ClearBackground(GRAY);
 		//temp.draw();
-		for (int i = 0; i < ents.size(); ++i)
-		{
-			ents[i].draw();
-		}
+
+
+
+		DrawTexture(ents.top().mySprite, 100, GetScreenHeight() - 50, WHITE);
 
 		EndDrawing();
 		//----------------------------------------------------------------------------------

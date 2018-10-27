@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{3C6504C1-D76F-48D5-ABED-FB03D7D9304B}</ProjectGuid>
-    <RootNamespace>Queues</RootNamespace>
+    <ProjectGuid>{26FF4D4D-8DD6-453E-936A-963C742CD0CF}</ProjectGuid>
+    <RootNamespace>Stacks</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -120,18 +120,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="attack.cpp" />
-    <ClCompile Include="baseCommand.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="moveTo.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="attack.h" />
-    <ClInclude Include="baseCommand.h" />
     <ClInclude Include="entity.h" />
-    <ClInclude Include="moveTo.h" />
-    <ClInclude Include="tQueue.h" />
     <ClInclude Include="tStack.h" />
     <ClInclude Include="tVector.h" />
   </ItemGroup>
