@@ -19,7 +19,11 @@ public:
 	}
 	tForwardList(const tForwardList& other)
 	{
-
+		for (Node * it = head; it != nullptr;)
+		{
+			it = other.head;
+			it = it->next;
+		}
 	}
 	tForwardList& operator=(const tForwardList &rhs)
 	{
