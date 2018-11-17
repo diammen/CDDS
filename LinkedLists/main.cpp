@@ -8,7 +8,7 @@ int main()
 	num.push_front(5);
 	num.push_front(5);
 	num.push_front(5);
-	num.remove(5);
+	num.resize(3);
 
 	return 0;
 }

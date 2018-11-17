@@ -51,7 +51,7 @@ int main()
 	{
 		// Update
 		//----------------------------------------------------------------------------------
-		if (IsMouseButtonPressed(MOUSE_RIGHT_BUTTON))
+		if (IsMouseButtonPressed(MOUSE_RIGHT_BUTTON)) // move
 		{
 			commands.push(new moveTo(GetMousePosition()));
 		}
@@ -63,12 +63,12 @@ int main()
 				commands.pop();
 			}
 		}
-		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) // attack
 		{
 			if (!commands.empty())
 			{
 				delete commands.front();
-				commands.pop();
+				commands.clear();
 			}
 			commands.push(new attack(GetMousePosition()));
 		}

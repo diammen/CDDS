@@ -7,7 +7,7 @@ class tForwardList
 	struct Node
 	{
 		T data;                     // data for the element stored
-		Node * next;                // pointer to node following this node
+		Node * next = nullptr;                // pointer to node following this node
 	};
 
 	Node * head;                    // pointer to head of linked list
@@ -82,4 +82,116 @@ public:
 		}
 		lastKnownGood->next = nullptr;
 	}
+
+	bool empty() const
+	{
+		if (head == nullptr)
+		{
+			return true;
+		}
+		return false;
+	}
+	void clear()
+	{
+		Node * current = head;
+		Node * next;
+		while (current != NULL)
+		{
+			next = head->next;
+			free(current);
+			current = next;
+		}
+	}
+	void resize(size_t newSize)
+	{
+		Node * current = head;
+		if (count() < newSize)
+		{
+			for (int i = 0; i < newSize; ++i)
+			{
+				if (current->next != nullptr)
+					current = current->next;
+				else
+				{
+					current->next = new Node;
+					current = current->next;
+				}
+			}
+			head = current;
+		}
+		else
+		{
+			head = current;
+			for (int i = 0; i < newSize - 1; ++i)
+			{
+				current = current->next;
+			}
+			Node * tempHead = current->next;
+			Node * tempNext = tempHead->next;
+			current->next = nullptr;
+			while (tempHead->next != nullptr)
+			{
+				delete tempHead;
+				tempHead = tempNext;
+				tempNext = tempHead->next;
+			}
+			tempHead->next = nullptr;
+		}
+	}
+	int count()
+	{
+		int counter = 0;
+		for (auto i = begin(); i != end(); ++i)
+			counter++;
+		return counter;
+	}
+
+	class iterator
+	{
+		Node * cur;                                 // current node being operated upon
+
+	public:
+		iterator() {}
+		iterator(Node * start)
+		{
+			cur = start;
+		}
+		bool operator==(const iterator& rhs) const  // returns true if the iterator points to the same node
+		{
+			return cur == rhs.cur;
+		};
+		bool operator!=(const iterator& rhs) const  // returns false if the iterator does not point to the same node
+		{
+			return cur != rhs.cur;
+		};
+		T& operator*() const                        // returns a reference to the element pointed to by the current node
+		{
+			return cur->data;
+		};
+		iterator& operator++()                      // pre-increment (returns a reference to this iterator after it is incremented)
+		{
+			cur = cur->next;
+			return (*this);
+		};
+		iterator operator++(int)                    // post-increment (returns an iterator to current node while incrementing the existing iterator)
+		{
+			iterator newIterator;
+			newIterator.cur = cur;
+			++cur;
+			return newIterator;
+		};
+		void goToBegin(Node* _head)
+		{
+			cur = _head;
+		};
+	};
+
+	iterator begin()
+	{
+		return iterator(head);
+	};
+	iterator end()
+	{
+		return iterator(nullptr);
+	};
 };
