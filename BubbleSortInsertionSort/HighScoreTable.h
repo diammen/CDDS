@@ -13,6 +13,7 @@ private:
 public:
 	std::vector<HighScoreEntry> hsVector;
 	std::vector<HighScoreEntry> topNNScores(int topRows);
+	std::vector<HighScoreEntry> topNNScoresBubble(int topRows);
 	void merge(std::vector<HighScoreEntry> * arr, size_t p, size_t q, size_t r);
 	void mergeSort(std::vector<HighScoreEntry> * arr, size_t p, size_t r);
 	bool pruneBottomNNScores(int bottomRows);

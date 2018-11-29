@@ -63,6 +63,7 @@ std::vector<std::string> HighScoreTable::split(std::string &line)
 std::vector<HighScoreEntry> HighScoreTable::topNNScores(int topRows)
 {
 	using namespace std;
+	// bubble sort
 	//bool swapped = false;
 	//vector<HighScoreEntry> newScore;
 	//newScore = hsVector;
@@ -105,6 +106,40 @@ std::vector<HighScoreEntry> HighScoreTable::topNNScores(int topRows)
 			newScore[j - 1] = newScore[j];
 			newScore[j] = key;
 		}
+	}
+	if (topRows > hsVector.size() - 1)
+	{
+		topRows = hsVector.size() - 1;
+	}
+	vector<HighScoreEntry> topNumScores;
+	for (int i = topRows; i >= 0; --i)
+	{
+		topNumScores.push_back(newScore[i]);
+	}
+	return topNumScores;
+}
+
+std::vector<HighScoreEntry> HighScoreTable::topNNScoresBubble(int topRows)
+{
+	using namespace std;
+	bool swapped = false;
+	vector<HighScoreEntry> newScore;
+	newScore = hsVector;
+
+	for (int i = 0; i < hsVector.size() - 1; ++i)
+	{
+		for (int j = 0; j < hsVector.size() - i - 1; ++j)
+		{
+			HighScoreEntry temp;
+			temp = newScore[j];
+			if (newScore[j].score > newScore[j + 1].score)
+			{
+				newScore[j].score = newScore[j + 1].score;
+				newScore[j + 1].score = temp.score;
+				swapped = true;
+			}
+		}
+		if (!swapped) break;
 	}
 	if (topRows > hsVector.size() - 1)
 	{
