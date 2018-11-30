@@ -15,5 +15,8 @@ int main()
 	num.resize(2);
 	std::cout << "Look in Visual Studio project to see functionality. Expected result should be: 6, 3" << std::endl;
 
+	tForwardList<int> test;
+	test = num;
+
 	return 0;
 }

@@ -19,15 +19,27 @@ public:
 	}
 	tForwardList(const tForwardList& other)
 	{
-		for (Node * it = head; it != nullptr;)
-		{
-			it = other.head;
-			it = it->next;
-		}
+		(*this) = other;
+		return (*this);
 	}
 	tForwardList& operator=(const tForwardList &rhs)
 	{
-		return rhs;
+		if (rhs.head != nullptr)
+		{
+			clear();
+			Node * temp = rhs.head->next;
+			Node * newNode = new Node{ temp->data, nullptr };
+			head = new Node{ rhs.head->data, newNode };
+			while (temp != nullptr)
+			{
+				temp = temp->next;
+				if (temp == nullptr)
+					break;
+				newNode->next = new Node{ temp->data, nullptr };
+				newNode = newNode->next;
+			}
+		}
+		return (*this);
 	}
 	~tForwardList()                 // destructor
 	{
@@ -95,10 +107,10 @@ public:
 	{
 		Node * current = head;
 		Node * next;
-		while (current != NULL)
+		while (current != nullptr)
 		{
 			next = head->next;
-			free(current);
+			delete current;
 			current = next;
 		}
 	}

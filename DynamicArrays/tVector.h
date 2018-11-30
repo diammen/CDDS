@@ -19,7 +19,6 @@ public:
 	~tVector()								// destroys the underlying array
 	{
 		delete[] arr;
-		delete arr;
 	}
 	tVector(const tVector &vec)
 	{
@@ -74,9 +73,8 @@ public:
 	}
 	void pop_back()						// drops the last element of the vector
 	{
-		arrCapacity--;
 		arrSize--;
-		reserve(arrCapacity);
+		reserve(arrSize);
 	}
 
 	T &at(size_t index)					// returns the element at the given element
@@ -108,7 +106,7 @@ public:
 		}
 		else
 		{
-			for (size_t i = 0; i < size; ++i)
+			for (size_t i = arrSize; i < size; ++i)
 			{
 				push_back(T());
 			}

@@ -77,21 +77,16 @@ public:
 	void pop_back()						// drops the last element of the vector
 	{
 		if (arrCapacity <= 0) return;
-		arrCapacity--;
 		arrSize--;
-		reserve(arrCapacity);
+		reserve(arrSize);
 	}
 
 	void pop_front()					// drops the first element of the vector
 	{
-		T * newArr = new T[arrCapacity - 1];
-		for (size_t i = 0; i < arrSize; ++i)
+		for (size_t i = 1; i < arrSize; ++i)
 		{
-			newArr[i] = arr[i + 1];
+			arr[i] = arr[i - 1];
 		}
-		delete[] arr;
-		arr = newArr;
-		arrCapacity--;
 		arrSize--;
 	}
 
